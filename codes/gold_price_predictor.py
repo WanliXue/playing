@@ -1,5 +1,6 @@
 # https://www.quantinsti.com/blog/gold-price-prediction-using-machine-learning-python/
 
+import datetime
 
 # LinearRegression is a machine learning library for linear regression
 from sklearn.linear_model import LinearRegression
@@ -19,7 +20,12 @@ import seaborn
 import fix_yahoo_finance as yf
 
 
-Df = yf.download('GLD','2008-03-05','2017-12-31')
+now=datetime.datetime.now()
+
+today_str=now.strftime("%Y-%m-%d")
+print today_str
+
+Df = yf.download('GLD','2008-01-01',today_str)
 Df=Df[['Close']]
 
 # Drop rows with missing values
